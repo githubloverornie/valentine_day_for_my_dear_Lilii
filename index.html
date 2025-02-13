@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>З Днем святого Валентина!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: float 6s ease-in infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: inherit;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .story {
+            background: #fff;
+            color: #333;
+        }
+
+        .gallery {
+            background: #ffd6d6;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem;
+        }
+
+        .gallery-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .message {
+            background: linear-gradient(135deg, #e66465, #9198e5);
+            color: white;
+        }
+
+        .button-link {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .heart-button {
+            background: white;
+            color: #e66465;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .heart-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Медіа-запити для адаптивності */
+        @media (max-width: 1200px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .content {
+                padding: 0 1rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .heart-button {
+                padding: 0.8rem 1.6rem;
+                font-size: 1rem;
+            }
+
+            .gallery-item {
+                margin: 0.5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .content {
+                padding: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="floating-hearts" id="hearts"></div>
+        <div class="content">
+            <h1>З Днем Закоханих, моя найсолодша! ❤️</h1>
+            <p>День, коли кохання наповнює кожне серце особливим теплом...</p>
+        </div>
+    </section>
+
+    <section class="story fade-in">
+        <div class="content">
+            <h2>Історія кохання</h2>
+            <p>Кохання - це найпрекрасніше почуття у світі. Воно надихає нас на великі справи, додає сил та енергії, робить наше життя яскравішим та щасливішим. У День святого Валентина ми маємо чудову нагоду висловити свої почуття тим, кого любимо.</p>
+            <p>Цей день став символом романтики та ніжності, днем, коли ми можемо відкрито говорити про свої почуття та дарувати радість близьким людям.</p>
+        </div>
+    </section>
+
+    <section class="gallery fade-in">
+        <div class="gallery-item">
+            <img src="/api/placeholder/300/200" alt="Романтичний захід сонця" />
+            <p>Романтичний захід сонця</p>
+        </div>
+        <div class="gallery-item">
+            <img src="/api/placeholder/300/200" alt="Квіти кохання" />
+            <p>Квіти кохання</p>
+        </div>
+        <div class="gallery-item">
+            <img src="/api/placeholder/300/200" alt="Святковий настрій" />
+            <p>Святковий настрій</p>
+        </div>
+    </section>
+
+    <section class="message fade-in">
+        <div class="content">
+            <h2>Відправте валентинку</h2>
+            <p>Зробіть цей день особливим для когось особливого у вашому житті. Відправте валентинку з теплими словами та побажаннями.</p>
+            <a href="#" class="button-link" id="buttonLink">
+                <div class="heart-button" id="sendLove">Туцьни туть!</div>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Створення анімованих сердець
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            document.querySelector('.floating-hearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Анімація появи елементів при прокручуванні
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Інтерактивна кнопка
+        document.getElementById('sendLove').addEventListener('click', function(e) {
+            const button = this;
+            button.innerHTML = 'Туць!';
+            button.style.backgroundColor = '#ff6b6b';
+            button.style.color = 'white';
+            
+            setTimeout(() => {
+                button.innerHTML = 'Туцьни туть!';
+                button.style.backgroundColor = 'white';
+                button.style.color = '#e66465';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
